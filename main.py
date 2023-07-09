@@ -29,13 +29,13 @@ def do_something():
         hsv = cv2.cvtColor(var.img, cv2.COLOR_BGR2HSV)
         var.mask = cv2.inRange(hsv, lower, upper)
 
-        contours, _ = cv2.findContours(var.mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        character_locate = get_character_location(contours)
-        move_character(character_locate,contours)
+        countours, _ = cv2.findContours(var.mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        character_locate = get_character_location(countours)
+        move_character(character_locate,countours)
 
         handle = win32gui.GetForegroundWindow()
         title = win32gui.GetWindowText(handle)
-        if title == var.window_title and len(contours)>0:
+        if title == var.window_title and len(countours)>0:
             pydirectinput.keyDown('v')
         execute_skill() if var.skill_time_happen >= 200 else None
         execute_T() if var.T_time_happen >= 100 else None
@@ -57,9 +57,8 @@ def start_execution():
     global pause_flag
     pause_flag = False
     label.config(text="執行中")
-    execute_skill()
-    execute_T()
-    execute_G()
+    T_execution()
+    G_execution()
     do_something()
 
 def T_execution():

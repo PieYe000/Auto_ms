@@ -15,7 +15,9 @@ def execute_T():
     pydirectinput.press('t')
     print("T")
     time.sleep(random.uniform(1,1.5))
-    pydirectinput.press('r')
+    pydirectinput.keyDown('r')
+    time.sleep(random.uniform(2,2.5))
+    pydirectinput.keyUp('r')
     var.T_time = time.time()
 
 def execute_G():
